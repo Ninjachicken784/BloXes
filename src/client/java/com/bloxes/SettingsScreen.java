@@ -68,12 +68,12 @@ public class SettingsScreen extends Screen {
 		// Size: [-] box [+]
 		this.sizeBox = this.addRenderableWidget(new EditBox(this.font, left + 24, TOP + ROW * 2, COLUMN_W - 48, 20, text("Size")));
 		this.sizeBox.setMaxLength(4);
-		this.sizeBox.setFilter(value -> value.matches("\\d*"));
 		this.sizeBox.setValue(Integer.toString(cfg.diameter));
 		this.sizeBox.setResponder(value -> {
-			if (!value.isEmpty()) {
+			String digits = value.replaceAll("\\D", ""); // only numbers count
+			if (!digits.isEmpty()) {
 				try {
-					cfg.diameter = Math.max(16, Math.min(4096, Integer.parseInt(value)));
+					cfg.diameter = Math.max(16, Math.min(4096, Integer.parseInt(digits)));
 				} catch (NumberFormatException ignored) {
 					// not a number yet
 				}
@@ -116,7 +116,7 @@ public class SettingsScreen extends Screen {
 
 		this.addRenderableWidget(Button.builder(text("Block list"), b -> {
 			BloxConfig.save();
-			this.minecraft.setScreen(new BlockListScreen(this));
+			this.minecraft.gui.setScreen(new BlockListScreen(this));
 		}).pos(right, TOP + ROW * 4).size(COLUMN_W, 20).build());
 
 		this.addRenderableWidget(Button.builder(text("Count again"), b -> AreaScanner.INSTANCE.reset())

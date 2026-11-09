@@ -34,7 +34,7 @@ public class BloXesMod implements ClientModInitializer {
 			if (pendingScreen != null) {
 				Supplier<Screen> supplier = pendingScreen;
 				pendingScreen = null;
-				client.setScreen(supplier.get());
+				client.gui.setScreen(supplier.get());
 			}
 		});
 
