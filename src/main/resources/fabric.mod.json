@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "bloxes",
+	"version": "${version}",
+	"name": "BloXes",
+	"description": "Select a circle or square area, outline it in the world, and count every block inside it. Tracks mining speed and time left (coming next).",
+	"authors": [
+		"Adrian"
+	],
+	"contact": {
+		"sources": "https://github.com/Ninjachicken784/BloXes"
+	},
+	"license": "All-Rights-Reserved",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.bloxes.BloXesMod"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
